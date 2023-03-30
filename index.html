@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Write your mind </title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/7e7cb3630d.js" crossorigin="anonymous"></script>
+
+</head>
+<body>
+    
+    <div id="header">
+        <div class="container">
+            <nav>
+                <img src="image/accenture-logo.jpg" class="logo">
+                
+                
+            </nav>
+
+            <div id="contact">
+                <div class="container">
+                    <div class="row">
+                        <div class="contact-left"> 
+                            <h1>Tell us what's in your mind</h1>  
+                        </div>
+                        <div class="contact-right">
+                          <form name="submit-to-google-sheet"> 
+                            <textarea name="Message"  rows="15" cols="70" placeholder="Your Message"></textarea>
+                            <button type="submit" class="btn btn2">Submit</button>
+                          </form> 
+                          <span id="msg"></span>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            
+            
+        </div>
+
+    </div>
+    <div class="copyright">
+        <p>copyright &copy; Susmita Gupta <i class="fa-regular fa-face-smile"></i></p>
+    </div>
+
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycby9URYbWxBS7zXVbahgZpjBMZ0iztnNojGqCBK5RQgnpGr0MGH8Zj76nXtwdw_ui-U/exec'
+        const form = document.forms['submit-to-google-sheet']
+        const msg =document.getElementById("msg")
+      
+        form.addEventListener('submit', e => {
+          e.preventDefault()
+          fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+          .then(response =>
+        {
+            msg.innerHTML = "Message sent successfully"
+            setTimeout(function(){
+                msg.innerHTML=""
+            },5000)
+            form.reset();
+        } )
+            .catch(error => console.error('Error!', error.message))
+        })
+      </script>
+</body>
+</html>
