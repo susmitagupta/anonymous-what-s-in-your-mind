@@ -76,3 +76,24 @@ form .btn2{
     margin-top: -20px;
    
    }
+
+
+
+   @media only screen and (max-width: 600px){
+    #header{
+        background-image: none;
+    }
+    
+    .contact-left h1{
+       font-size: 18px; 
+    }
+
+    .form input, form textarea{
+       width: 400px;
+    }
+ 
+        .copyright{
+            font-size: 14px;
+        }
+    
+}
